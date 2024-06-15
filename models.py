@@ -30,7 +30,8 @@ class Student(db.Model, SerializerMixin):
 class Admin(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    _password = db.Column(db.String(), nullable=False)
+    password = db.Column(db.String(), nullable=False)
+    username = db.Column(db.String(), nullable=False)
     courses = db.relationship('Course', secondary='admin_courses', backref=db.backref('admins', lazy='dynamic'))
 
     #getter for our  _password
